@@ -1,71 +1,140 @@
-@keyframes rotation
-{
-    from
-    {
-        transform: rotate(0deg);
-    }
-    to
-    {
-        transform: rotateY(500deg) rotateZ(500deg) rotateX(180deg);
-    }
-}
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
 
+}
 body{
-    background-color: black;
+    height: 100vh;
+    background-image: radial-gradient(green,yellow);
+
 }
 
-.cube
-{
-    height:200px;
-    width:200px;
-    position:relative;
-    margin: 180px;
-    margin-left: 40%;
-    transform-style:preserve-3d;
-    perspective:10000px;
-
-    animation-name: rotation;
-    animation-timing-function: ease-in-out;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-.face{
-    height: 100%;
-    width: 100%;
+.container{
+    height: 60vh;
+    width: 30vw;
     position: absolute;
-    left: 20%;
-    top:20%;
-    bottom:10%;
-
-
-}
-
-.one{
-    background-color: skyblue;
-}
-
-.two{
-    background-color: orange;
-    transform: rotateY(90deg) translateZ(-100px) translateX(-100px);
-}
-
-.three{
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50% ,-50%);
+    perspective: 1000px;
     background-color: red;
-    transform: rotateY(90deg) translateZ(100px) translateX(-100px);
+
 }
 
-.four{
-    background-color: green;
-    transform: rotateX(90deg) translateZ(-100px) translateY(100px);
-}
-.five{
-    background-color: violet;
-    transform: rotateX(90deg) translateZ(100px) translateY(100px);
+.box{
+    height: 250px;
+    width: 250px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    transform-style: preserve-3d;
+    animation: animate 5s infinite;
+
+
 }
 
-.six{
-    background-color: brown;
-    transform: translateZ(200px);
+@keyframes animate{
+    0%{
+        transform: rotateX(45deg) rotateY(-45deg);
+    }
+    25%{
+        transform: rotateX(-45deg) rotateY(-45deg);
+    }
+    50%{
+        transform: rotateX(45deg) rotateY(-45deg);
+    }
+    75%{
+        transform: rotateX(-45deg) rotateY(45deg);
+    }
+    0%{
+        transform: rotateX(45deg) rotateY(-45deg);
+    }
+    
+
 }
+
+.card{
+    height: 250px;
+    width: 250px;
+    text-align: center;
+    padding: 100px 0px;
+    color: white;
+    background-image: radial-gradient(green ,yellow);
+    border: 2px solid blue;
+    font-size: 32px;
+    box-sizing: border-box;
+    position: absolute;
+    transition: all 1s;
+
+}
+
+#front{
+    transform: translateZ(125px);
+}
+
+#back{
+    transform: translateZ(-125px);
+}
+
+#left{
+    right: 125px;
+    transform: rotateY(-90deg);
+}
+
+#right{
+    left: 125px;
+    transform: rotateY(90deg);
+}
+
+#top{
+    bottom: 125px;
+    transform: rotateX(90deg);
+}
+
+#bottom{
+    top: 125px;
+    transform: rotateX(-90deg);
+}
+
+input{
+    height: 50px;
+    width: 100px;
+    background: pink;
+    font-size: 22px;
+    cursor: pointer;
+    position: absolute;
+    top: -100px;
+    left: 175px;
+
+
+}
+
+input:focus~ .box #front{
+    transform: translateZ(180px) rotateY(360deg);
+}
+
+input:focus~ .box #back{
+    transform: translateZ(-180px) rotateY(360deg);
+}
+
+input:focus~ .box #left{
+    right: 180px;
+}
+
+input:focus~ .box #right{
+    left: 180px;
+}
+
+input:focus~ .box #top{
+    bottom: 180px;
+}
+
+input:focus~ .box #bottom{
+    top: 180px;
+}
+
+input:focus~ .box #front{
+    transform: translateZ(180px) rotateY(360deg);
+}
+
